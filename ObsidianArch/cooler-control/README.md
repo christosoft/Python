@@ -148,7 +148,3 @@ Pull requests y sugerencias son bienvenidas. Este proyecto busca modularidad, cl
 
 ChristopherEspecialista en automatización Linux, scripting modular y entornos reproducibles.
 
-
----
-
-Puedes guardar este contenido como `README.md` directamente en `/opt/control-cooler/` o subirlo a tu repositorio en GitHub. Si quieres que te ayude a generar un script CLI para cambiar el perfil desde la terminal con un solo comando, lo armamos en segundos.
