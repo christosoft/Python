@@ -146,5 +146,5 @@ Pull requests y sugerencias son bienvenidas. Este proyecto busca modularidad, cl
 
 🧑‍💻 Autor
 
-ChristopherEspecialista en automatización Linux, scripting modular y entornos reproducibles.
+Christosoft Especialista en automatización Linux, scripting modular y entornos reproducibles.
 
