@@ -1,0 +1,11 @@
+#!/bin/bash
+
+SCRIPT_DIR="/opt/control-cooler"
+
+CPU_LOW_TEMP=45
+CPU_MEDIUM_TEMP=65
+CPU_HIGH_TEMP=80
+
+LOG_FILE="$SCRIPT_DIR/cooler-control.log"
+MAX_LOG_SIZE=1048576
+DEVICE_NAME="H100i GTX"
