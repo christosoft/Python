@@ -1,0 +1,11 @@
+# Create a virtual environment
+python -m venv ~/wallpaper_env
+
+# Activate the environment
+source ~/wallpaper_env/bin/activate
+
+# Install selenium in the virtual environment
+pip install selenium
+
+# Run your script
+python -m wallpaper_fetcher --source wallhaven --apply --clean
