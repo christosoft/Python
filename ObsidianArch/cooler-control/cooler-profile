@@ -1,0 +1,20 @@
+#!/bin/bash
+
+PROFILE="$1"
+PROFILE_FILE="/opt/control-cooler/cooler-profile.conf"
+VALID_PROFILES=("auto" "gaming" "silent" "basic")
+
+if [[ -z "$PROFILE" ]]; then
+    echo "❌ Error: Debes especificar un perfil. Ejemplo: cooler-profile gaming"
+    exit 1
+fi
+
+if [[ ! " ${VALID_PROFILES[*]} " =~ " $PROFILE " ]]; then
+    echo "❌ Perfil inválido: '$PROFILE'"
+    echo "Perfiles válidos: ${VALID_PROFILES[*]}"
+    exit 1
+fi
+
+echo "PERFIL=\"$PROFILE\"" | sudo tee "$PROFILE_FILE" > /dev/null
+echo "✅ Perfil cambiado a '$PROFILE'. El servicio lo detectará automáticamente."
+echo "[$(date)] Perfil auto aplicado" >> /var/log/cooler-profile.log

@@ -1,26 +1,32 @@
 #!/bin/bash
 
-SCRIPT_DIR="/opt/control-cooler"
-[ -f "$SCRIPT_DIR/cooler-profile.conf" ] && source "$SCRIPT_DIR/cooler-profile.conf"
-PERFIL="${PERFIL:-auto}"
+get_speed_for_profile() {
+    local profile="$1"
+    local temp="$2"
 
-set_profile_speeds() {
-    case "$PERFIL" in
+    temp=$(to_int "$temp")
+
+    case "$profile" in
         gaming)
-            LOW_SPEED=70; MEDIUM_SPEED=85; HIGH_SPEED=100; MAX_SPEED=100
-            liquidctl --match "$DEVICE_NAME" set 1 color fixed ff00ff
-            ;;      
+            if [ "$temp" -lt 60 ]; then echo 70
+            elif [ "$temp" -lt 75 ]; then echo 85
+            else echo 100; fi
+            ;;
         silent)
-            LOW_SPEED=20; MEDIUM_SPEED=35; HIGH_SPEED=50; MAX_SPEED=60
-            liquidctl --match "$DEVICE_NAME" set 1 color fixed 00ffff
+            if [ "$temp" -lt 45 ]; then echo 20
+            elif [ "$temp" -lt 55 ]; then echo 35
+            else echo 50; fi
             ;;
         basic)
-            LOW_SPEED=35; MEDIUM_SPEED=50; HIGH_SPEED=65; MAX_SPEED=80
-            liquidctl --match "$DEVICE_NAME" set 1 color fixed ffffcc
+            if [ "$temp" -lt 50 ]; then echo 35
+            elif [ "$temp" -lt 65 ]; then echo 50
+            else echo 65; fi
             ;;
         auto|*)
-            LOW_SPEED=40; MEDIUM_SPEED=55; HIGH_SPEED=75; MAX_SPEED=100
+            if [ "$temp" -lt 50 ]; then echo 40
+            elif [ "$temp" -lt 60 ]; then echo 55
+            elif [ "$temp" -lt 70 ]; then echo 75
+            else echo 100; fi
             ;;
     esac
-    log_message "🎛️ Perfil activo: $PERFIL"
 }
