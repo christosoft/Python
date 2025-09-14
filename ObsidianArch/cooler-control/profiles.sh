@@ -9,7 +9,7 @@ set_profile_speeds() {
         gaming)
             LOW_SPEED=70; MEDIUM_SPEED=85; HIGH_SPEED=100; MAX_SPEED=100
             liquidctl --match "$DEVICE_NAME" set 1 color fixed ff00ff
-            ;;
+            ;;      
         silent)
             LOW_SPEED=20; MEDIUM_SPEED=35; HIGH_SPEED=50; MAX_SPEED=60
             liquidctl --match "$DEVICE_NAME" set 1 color fixed 00ffff
